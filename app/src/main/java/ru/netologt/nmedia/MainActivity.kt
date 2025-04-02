@@ -1,6 +1,8 @@
 package ru.netologt.nmedia
 
+import android.content.DialogInterface
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import ru.netologt.nmedia.databinding.ActivityMainBinding
 import ru.netologt.nmedia.dto.Post
@@ -19,8 +21,8 @@ class MainActivity : AppCompatActivity() {
             published = "21 мая в 18:36",
             likedByMe = false,
 
-            countLikes = 999,
-            countShare = 999,
+            countLikes = 1000_000,
+            countShare = 1000_000,
             repostByMe = false
 
         )
@@ -30,8 +32,10 @@ class MainActivity : AppCompatActivity() {
             author.text = post.author
             published.text = post.published
             content.text = post.content
-            countLikes.text = post.countLikes.toString()
-            countShare.text = post.countShare.toString()
+            countLikes.text = formatNumber(post.countLikes.toInt())
+            countShare.text = formatNumber(post.countShare.toInt())
+
+
 
             like.setOnClickListener {
                 post.likedByMe = !post.likedByMe
