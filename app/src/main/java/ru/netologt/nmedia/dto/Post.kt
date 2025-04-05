@@ -1,5 +1,4 @@
-package dto
-
+package ru.netologt.nmedia.dto
 
 data class Post(
     val id: Long,
@@ -8,7 +7,7 @@ data class Post(
     val content: String,
     val likedByMe: Boolean,
 
-    var countLikes:Long,
-    var countShare:Long,
-    var repostByMe:Boolean
+    val countLikes: Long,
+    val countShare: Long,
+    val repostByMe: Boolean
 )

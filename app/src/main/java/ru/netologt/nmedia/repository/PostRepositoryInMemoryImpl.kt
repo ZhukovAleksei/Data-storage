@@ -2,9 +2,9 @@ package ru.netologt.nmedia.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import dto.Post
+import ru.netologt.nmedia.dto.Post
 
-class PostRepositoryInMemoryImpl: PostRepository {
+class PostRepositoryInMemoryImpl : PostRepository {dddd
 
     private var post = Post(
         id = 1,
@@ -21,16 +21,21 @@ class PostRepositoryInMemoryImpl: PostRepository {
 
     private val data = MutableLiveData(post)
 
-    override fun get(): LiveData<Post>  = data
+    override fun get(): LiveData<Post> = data
 
     override fun like() {
         post = post.copy(likedByMe = !post.likedByMe)
-        if (post.likedByMe) post.countLikes++ else post.countLikes--
+        post = if (post.likedByMe) post.copy(countLikes = post.countLikes + 1) else post.copy(
+            countLikes = post.countLikes - 1
+        )
         data.value = post
     }
-    override fun toShare(){
+
+    override fun toShare() {
         post = post.copy(repostByMe = !post.repostByMe)
-        if (post.repostByMe) post.countShare++ else post.countShare--
+        post = if (post.repostByMe) post.copy(countShare = post.countShare + 1) else post.copy(
+            countShare = post.countShare - 1
+        )
         data.value = post
 
     }

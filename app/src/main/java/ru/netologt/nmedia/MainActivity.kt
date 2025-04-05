@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
                 countLikes.text = formatNumber(post.countLikes.toInt())
                 countShare.text = formatNumber(post.countShare.toInt())
 
-                like.setImageResource(R.drawable.baseline_favorite_border_24)
                 like.setImageResource(
                     if(post.likedByMe){
                         R.drawable.ic_liked_24
