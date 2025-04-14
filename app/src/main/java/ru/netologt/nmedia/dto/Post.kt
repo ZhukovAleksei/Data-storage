@@ -9,5 +9,8 @@ data class Post(
 
     val countLikes: Long,
     val countShare: Long,
+    val countView: Long,
     val repostByMe: Boolean
 )
+
+

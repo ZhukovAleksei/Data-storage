@@ -9,6 +9,15 @@
     <string name="count_likes" translatable="false">5</string>
     <string name="count_views" translatable="false">10</string>
     <string name="views">Views</string>
+    <string name="remove">Remove</string>
+    <string name="edit">Edit</string>
+    <string name="description_post_save">Save</string>
+    <string name="post_text">Post text</string>
+    <string name="cancel">Cancel</string>
+    <string name="error_empty_content">Content can\'t be empty</string>
+    <string name="edit_message">Edit Message</string>
+    <string name="description_cancel" translatable="false" />
+    <string name="description_bottom_line_edit" translatable="false" />
     <string name="content">Hi, this is a new Netology! Once upon a time, Netology
 began with intensive courses in online marketing. Then
 came courses in design, markup, analytics
@@ -20,4 +29,5 @@ more, aim higher, and run faster. Our mission
  - help to embark on the path of growth and start the chain
  changes -> http://netolo.gy/fyb</string>
     <string name="likes">likes</string>
+    <string name="message">message</string>
 </resources>
