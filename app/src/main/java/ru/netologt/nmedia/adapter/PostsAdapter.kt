@@ -78,12 +78,10 @@ class PostViewHolder(
 
                             R.id.remove -> {
                                 listener.onRemove(post)
-//                                true
                                 return@setOnMenuItemClickListener true
                             }
                             R.id.edit -> {
                                 listener.onEdit(post)
-//                                true
                                 return@setOnMenuItemClickListener true
                             }
                             else -> false

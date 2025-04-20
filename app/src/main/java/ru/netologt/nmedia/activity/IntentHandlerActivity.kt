@@ -6,7 +6,7 @@ import android.content.Intent
 import androidx.activity.result.contract.ActivityResultContract
 
 
-class EditPostActivityContract : ActivityResultContract<String, String?>() {
+class IntentHandlerActivity : ActivityResultContract<String, String?>() {
 
     override fun createIntent(context: Context, input: String): Intent =
         Intent(context, NewPostActivity::class.java).apply {

@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val editPostActivityContract =
-            registerForActivityResult(EditPostActivityContract()) { text ->
+            registerForActivityResult(IntentHandlerActivity()) { text ->
                 text?.let {
                     viewModel.changeContent(it)
                     viewModel.saveContent()
