@@ -1,6 +1,7 @@
 package ru.netologt.nmedia.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.DiffUtil
@@ -16,6 +17,7 @@ interface PostEventListener {
     fun onRemove(post: Post)
     fun onLike(post: Post)
     fun onShare(post: Post)
+    fun onVideo(post: Post)
 }
 
 class PostAdapter(
@@ -57,27 +59,33 @@ class PostViewHolder(
                 text = formatNumber(post.countShare.toInt())
             }
 
+            if (post.video == null) {
+                binding.playVideoGroup.visibility = View.GONE
+            } else {
+                binding.playVideoGroup.visibility = View.VISIBLE
+            }
+
             like.setOnClickListener { listener.onLike(post) }
             toShare.setOnClickListener { listener.onShare(post) }
-
+            play.setOnClickListener { listener.onVideo(post) }
+            backgroundVideo.setOnClickListener { listener.onVideo(post) }
             menu.setOnClickListener {
                 PopupMenu(it.context, it).apply {
                     inflate(R.menu.post_actions)
 
                     setOnMenuItemClickListener { menuItem ->
                         when (menuItem.itemId) {
+
                             R.id.remove -> {
                                 listener.onRemove(post)
-                                true
+//                                true
                                 return@setOnMenuItemClickListener true
                             }
-
                             R.id.edit -> {
                                 listener.onEdit(post)
-                                true
+//                                true
                                 return@setOnMenuItemClickListener true
                             }
-
                             else -> false
                         }
                     }
@@ -85,6 +93,18 @@ class PostViewHolder(
             }
         }
     }
+}
+
+class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
+    override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
+        return oldItem.id == newItem.id
+    }
+
+    override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
+        return oldItem == newItem
+    }
+
+    override fun getChangePayload(oldItem: Post, newItem: Post): Any = Unit
 }
 
 fun formatNumber(number: Int): String {
@@ -124,16 +144,5 @@ fun formatNumber(number: Int): String {
     }
 }
 
-class PostDiffCallback : DiffUtil.ItemCallback<Post>() {
-    override fun areItemsTheSame(oldItem: Post, newItem: Post): Boolean {
-        return oldItem.id == newItem.id
-    }
-
-    override fun areContentsTheSame(oldItem: Post, newItem: Post): Boolean {
-        return oldItem == newItem
-    }
-
-    override fun getChangePayload(oldItem: Post, newItem: Post): Any = Unit
-}
 
 
