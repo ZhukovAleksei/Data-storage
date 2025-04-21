@@ -3,14 +3,7 @@ package ru.netologt.nmedia.activity
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContract
-import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.snackbar.BaseTransientBottomBar.LENGTH_INDEFINITE
-import com.google.android.material.snackbar.Snackbar
-import ru.netologt.nmedia.R
-import ru.netologt.nmedia.databinding.ActivityIntentHandlerBinding
-
 
 class IntentHandlerActivity : ActivityResultContract<String, String?>() {
 
@@ -26,5 +19,3 @@ class IntentHandlerActivity : ActivityResultContract<String, String?>() {
             null
         }
 }
-
-
