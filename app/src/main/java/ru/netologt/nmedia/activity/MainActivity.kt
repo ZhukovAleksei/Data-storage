@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel: PostViewModel by viewModels()
 
-        val newPostContract = registerForActivityResult(NewPostResultContract()) { text ->   //NewPostActivityContract
+        val newPostContract = registerForActivityResult(NewPostResultContract()) { text ->
             text?.let {
                 viewModel.changeContent(it)
                 viewModel.saveContent()
